@@ -1,0 +1,12 @@
+Task-1 
+Create a simple dApp using Web3.js that interacts with a smart contract deployed on the Ethereum blockchain.
+The dApp can have a simple user interface that allows users to input data and interact with the smart contract.
+The candidate can use tools like Truffle and Ganache to create and deploy the smart contract, and test it locally before deploying it on the mainnet.
+The dApp can have basic functionalities like creating, reading, updating, and deleting data on the blockchain.
+
+
+For global installation
+- mkdir ~/.npm-global
+- npm config set prefix '~/.npm-global'
+- export PATH=~/.npm-global/bin:$PATH
+- source ~/.profile
