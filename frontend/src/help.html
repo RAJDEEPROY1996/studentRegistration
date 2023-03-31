@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Send Data to the Blockchain</title>
+</head>
+<body>
+  <h1>Send Data to the Blockchain</h1>
+  <form id="data-form">
+    <label for="data-input">Data to send:</label>
+    <input type="text" id="data-input" name="data-input" required>
+    <br><br>
+    <button type="submit">Send Data</button>
+  </form>
+
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.3.4/dist/web3.min.js"></script>
+  <script>
+    // Initialize a Web3 instance using window.ethereum
+    const web3 = new Web3(window.ethereum);
+
+    // Request access to the user's Metamask account
+    window.ethereum.enable();
+
+    // Set the contract address and ABI
+    const contractAddress = '0x1234567890123456789012345678901234567890';
+    const contractAbi = [
+      {
+        "inputs": [
+          {
+            "internalType": "string",
+            "name": "data",
+            "type": "string"
+          }
+        ],
+        "name": "sendData",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      }
+    ];
+
+    // Create a contract instance using the ABI and contract address
+    const contract = new web3.eth.Contract(contractAbi, contractAddress);
+
+    // Handle the form submission
+    const dataForm = document.getElementById('data-form');
+    dataForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const inputData = document.getElementById('data-input').value;
+      const transactionParameters = {
+        from: window.ethereum.selectedAddress, // The user's Metamask address
+        to: contractAddress,
+        data: contract.methods.sendData(inputData).encodeABI() // Function call data
+      };
+      window.ethereum
+        .sendTransaction(transactionParameters)
+        .then((transactionHash) => {
+          console.log(`Transaction hash: ${transactionHash}`);
+          alert('Data sent to the blockchain!');
+        })
+        .catch((error) => {
+          console.error(`Error: ${error}`);
+          alert('An error occurred while sending data to the blockchain.');
+        });
+    });
+  </script>
+</body>
+</html>

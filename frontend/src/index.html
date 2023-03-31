@@ -4,11 +4,143 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Student </title>
+    <style>
+        #connectButton{
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;;   
+        }
+        button{
+            background-color: yellow; 
+            border: none;
+            color: black;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;;   
+        }
+        #register {
+            background-color: lightblue;
+            box-sizing: border-box;
+        }
+        #displayData{
+            background-color: lightgreen; 
+        }
+        #updateName {
+            background-color: lightgoldenrodyellow;
+        }
+        #updateCourse{
+            background-color: lime;
+        }
+        #deleteRecord{
+            background-color: lightseagreen;
+        }
+        input[type=text] {
+        width: 50%;
+        height: 5px;
+        padding: 10px 10px;
+        margin: 4px 0;
+        }
+        body{
+            font-size:150%;
+        }
+        #stRecord,td,tr,th{
+            border: 1px black;
+            border-style: solid;
+            border-collapse: collapse;
+            font-size: 150%;
+        }
+    </style>
 </head>
-<body>
-    
-    
-    <script src="./main.js"></script>
+<body align="center">
+    <h1>Student Information</h1>
+    <h3 id="stWal">Wallet Connect</h3>
+    <div id="connectDiv">
+        <button id="connectButton" onclick="bundle.connect()">Connect</button>
+        <h1 id = "add"></h1>
+        <br>
+    </div>    
+    <div id="register">
+    <h3 id="stRegis">Student Registration</h3>
+    <form id="studentRegister">
+        <label for="data-input">Student Wallet Address:</label><br>
+        <input type="text" id="walletId" name="walletId" required>
+        <br><br>
+        <label for="data-input">Student Name:</label><br>
+        <input type="text" id="studentName" name="studentName" required>
+        <br><br>
+        <label for="data-input">Student Course Enroll:</label><br>
+        <input type="text" id="studentCourse" name="studentCourse" required>
+        <br><br>
+        <button id="stRegister" type="submit">Register Student</button>
+    </form>
+    <br><br>
+    </div>    
+    <div id="displayData">
+        <h3>Student Record are as follows:</h3>
+        <form id="studentData">
+            <label for="data-input">Student Wallet Address:</label><br>
+            <input type="text" id="studentWalletID" name="studentWalletID" required>
+            <br><br>
+            <button type="submit">Display Record</button>
+        </form>
+        <table id="stRecord" style="display: none;margin-left: auto;margin-right: auto;">
+        <tr>
+            <th>Roll No</th>
+            <th>Student Name</th>
+            <th>Student Course</th>
+        </tr>
+        <tr>
+            <td id="stRoll"></td>
+            <td id="stName"></td>
+            <td id="stCourse"></td>
+        </tr>
+        </table>
+        <br><br>
+    </div>
+    <div id="updateName">
+        <h3>Student Name Update</h3>
+        <form id="updatestName">
+            <label for="data-input">Student Wallet Address:</label><br>
+            <input type="text" id="stIDupdate" name="stIDupdate" required>
+            <br><br>
+            <label for="data-input">Student Name Update:</label><br>
+            <input type="text" id="stNameupdate" name="stNameupdate" required>
+            <br><br>
+            <button type="submit">Update Name</button>
+        </form>
+        <br><br>
+    </div>
+    <div id="updateCourse">
+        <h3>Student Course Update</h3>
+        <form id="updatestCourse">
+            <label for="data-input">Student Wallet Address:</label><br>
+            <input type="text" id="stIDCupdate" name="stIDCupdate" required>
+            <br><br>
+            <label for="data-input">Student Course Update:</label><br>
+            <input type="text" id="stCourseupdate" name="stCourseupdate" required>
+            <br><br>
+            <button type="submit">Update Course</button>
+        </form>
+        <br><br>
+    </div>
+    <div id="deleteRecord">
+        <h3>Student Record Deleted</h3>
+        <form id="stRecordDeleted">
+            <label for="data-input">Student Wallet Address:</label><br>
+            <input type="text" id="stIDdel" name="stIDdel" required>
+            <br><br>
+            <button type="submit"> Delete Record</button>
+        </form>
+        <br><br>
+    </div>
+    <script src="../dist/bundle.js" type="text/javascript"></script>
 </body>
 </html>
